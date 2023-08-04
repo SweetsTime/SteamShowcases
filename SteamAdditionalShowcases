@@ -1,0 +1,30 @@
+// 填入物品代码，比如 游戏收藏家 为CAI=
+const code = "";
+
+// 填入Token， 访问 https://store.steampowered.com/pointssummary/ajaxgetasyncconfig 获取
+const token = "";
+
+const formData = new FormData();
+formData.append("input_protobuf_encoded", code);
+fetch(`https://api.steampowered.com/ILoyaltyRewardsService/RedeemPointsForProfileCustomization/v1?access_token=${token}`, {
+    method: "POST",
+    mode: "cors",
+    body: formData,
+});
+
+
+//举例——购买第三个游戏收藏家展柜注入的代码为：
+const code = "CAI=";
+
+const token = "xxxxx";
+const formData = new FormData();
+formData.append("input_protobuf_encoded", code);
+fetch(`https://api.steampowered.com/ILoyaltyRewardsService/RedeemPointsForProfileCustomization/v1?access_token=${token}`, {
+method: "POST",
+mode: "cors",
+body: formData,
+});
+
+//xxxxx那个位置每个人都不一样，需要查一下
+//登录https://store.steampowered.com/pointssummary/ajaxgetasyncconfig查询，
+//出现"webapi_token":"xxxxx"后把XXX那个位置复制出来写在代码里
